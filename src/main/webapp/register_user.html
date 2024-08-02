@@ -1,0 +1,121 @@
+<!-- register_user.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register New User</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+	
+	<link rel="stylesheet"
+	    	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	    <link rel="stylesheet"
+	        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	    <script
+	    	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	    <script
+	    	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	    <script
+	        src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+			
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<style>
+			body {
+			    font-family: Arial, sans-serif;
+			    margin: 20px;
+			}
+
+			h1 {
+			    color: #333;
+			}
+
+			ul {
+			    list-style-type: none;
+			}
+
+			 ul li {
+			    display: inline;
+			    margin-right: 10px;
+			}
+
+			table {
+			    width: 100%;
+			    border-collapse: collapse;
+			}
+
+			table, th, td {
+			    border: 1px solid black;
+			}
+
+			th, td {
+			    padding: 8px;
+			    text-align: left;
+			}
+
+		</style>
+</head>
+<body>
+	
+	<div class="container">
+		<h1 class="p-3"> Register New User </h1>
+			
+<!--    <h1>Register New User</h1>-->
+
+    <form id="registerUserForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select><br><br>
+
+        <label for="birthdate">Birthdate:</label>
+        <input type="text" id="birthdate" name="birthdate" required><br><br>
+
+        <label for="workAddress">Work Address:</label>
+        <textarea id="workAddress" name="workAddress"></textarea><br><br>
+
+        <label for="homeAddress">Home Address:</label>
+        <textarea id="homeAddress" name="homeAddress"></textarea><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        $(function() {
+            $("#birthdate").datepicker({ dateFormat: 'yy-mm-dd' });
+
+            $("#registerUserForm").submit(function(event) {
+                event.preventDefault();
+                var formData = {
+                    name: $("#name").val(),
+                    surname: $("#surname").val(),
+                    gender: $("#gender").val(),
+                    birthdate: $("#birthdate").val(),
+                    address: {
+                        workAddress: $("#workAddress").val(),
+                        homeAddress: $("#homeAddress").val()
+                    }
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/users",
+                    contentType: "application/json",
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        alert("User registered successfully!");
+                        window.location.href = "index.html";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

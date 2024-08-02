@@ -1,0 +1,85 @@
+<!-- user_details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+			body {
+			    font-family: Arial, sans-serif;
+			    margin: 20px;
+			}
+
+			h1 {
+			    color: #333;
+			}
+
+			ul {
+			    list-style-type: none;
+			}
+
+			 ul li {
+			    display: inline;
+			    margin-right: 10px;
+			}
+
+			table {
+			    width: 100%;
+			    border-collapse: collapse;
+			}
+
+			table, th, td {
+			    border: 1px solid black;
+			}
+
+			th, td {
+			    padding: 8px;
+			    text-align: left;
+			}
+
+		</style>
+</head>
+<body>
+    <h1>User Details</h1>
+    <div id="userDetails">
+       
+    </div>
+
+    <script>
+		
+		
+		$(document).ready(function() {
+		    const urlParams = new URLSearchParams(window.location.search);
+		    const userId = urlParams.get('id');
+
+		    function loadUserDetails() {
+		        $.ajax({
+		            url: `/api/users/${userId}`,
+		            type: "GET",
+		            success: function(user) {
+		                const userDetails = $("#userDetails");
+		                userDetails.empty();
+		                userDetails.append(`
+		                    <p>Name: ${user.name}</p>
+		                    <p>Surname: ${user.surname}</p>
+		                    <p>Gender: ${user.gender}</p>
+		                    <p>Birthdate: ${user.birthdate}</p>
+		                    <p>Work Address: ${user.address.workAddress}</p>
+		                    <p>Home Address: ${user.address.homeAddress}</p>
+		                `);
+		            },
+		            error: function(error) {
+		                alert("Error loading user details");
+		            }
+		        });
+		    }
+
+		    loadUserDetails();
+		});
+
+		
+		
+    </script>
+</body>
+</html>
