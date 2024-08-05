@@ -1,50 +1,16 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<style>
-		body {
-		    font-family: Arial, sans-serif;
-		    margin: 20px;
-		}
-
-		h1 {
-		    color: #333;
-		}
-
-		ul {
-		    list-style-type: none;
-		}
-
-		 ul li {
-		    display: inline;
-		    margin-right: 10px;
-		}
-
-		table {
-		    width: 100%;
-		    border-collapse: collapse;
-		}
-
-		table, th, td {
-		    border: 1px solid black;
-		}
-
-		th, td {
-		    padding: 8px;
-		    text-align: left;
-		}
-
-	</style>
+	<link rel="stylesheet" href="\css\index.css">
 </head>
 <body>
-    <h1>Homepage</h1>
-    <ul>
-        <li><a href="display_users.html">Display Users</a></li>
-        <li><a href="register_user.html">Register New User</a></li>
-    </ul>
+    <div class="vertical-menu">
+	  <a href="index.html" class="active">Homepage</a>
+	  <a href="display_users.html">Display Users</a>
+	  <a href="register_user.html">Register New User</a>
+	</div>
 </body>
 </html>

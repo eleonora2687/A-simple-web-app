@@ -5,41 +5,10 @@
     <meta charset="UTF-8">
     <title>Display Users</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<style>
-			body {
-			    font-family: Arial, sans-serif;
-			    margin: 20px;
-			}
-
-			h1 {
-			    color: #333;
-			}
-
-			ul {
-			    list-style-type: none;
-			}
-
-			 ul li {
-			    display: inline;
-			    margin-right: 10px;
-			}
-
-			table {
-			    width: 100%;
-			    border-collapse: collapse;
-			}
-
-			table, th, td {
-			    border: 1px solid black;
-			}
-
-			th, td {
-			    padding: 8px;
-			    text-align: left;
-			}
-
-		</style>
-</head>
+	<link rel="stylesheet" href="\css\display_users.css">
+	<script src="js\display_users.js"></script>
+	
+	</head>
 <body>
     <h1>Users</h1>
     <table border="1">
@@ -54,36 +23,5 @@
         </tbody>
     </table>
 
-    <script>
-        $(document).ready(function() {
-            $.getJSON("/api/users", function(users) {
-                var rows = '';
-                $.each(users, function(index, user) {
-                    rows += '<tr>';
-                    rows += '<td>' + user.name + '</td>';
-                    rows += '<td>' + user.surname + '</td>';
-                    rows += '<td><button onclick="viewUser(' + user.id + ')">View</button>';
-                    rows += '<button onclick="deleteUser(' + user.id + ')">Delete</button></td>';
-                    rows += '</tr>';
-                });
-                $('#usersTableBody').html(rows);
-            });
-        });
-
-        function viewUser(id) {
-            window.open('/user_details.html?id=' + id, '_blank');
-        }
-
-        function deleteUser(id) {
-            $.ajax({
-                type: "DELETE",
-                url: "/api/users/" + id,
-                success: function() {
-                    alert("User deleted successfully!");
-                    location.reload();
-                }
-            });
-        }
-    </script>
 </body>
 </html>
