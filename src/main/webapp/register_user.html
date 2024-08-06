@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 	<link rel="stylesheet" href="\css\register_user.css">
+	<link rel="stylesheet" href="\css\horiz_navbar.css">
 	
 	<script
 	    	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,9 +24,19 @@
 </head>
 
 <body>
-	<form action="/action_page.php" form id="registerUserForm">
+	
+	<ul>
+			  <li><a class="active" href="index.html">Homepage</a></li>
+			  <li><a href="display_users.html">Display Users</a></li>
+			  <li><a href="register_user.html">Register New User</a></li>
+			  
+			</ul>
+
+			
+	<form action="/action_page.php" form id="registerUserForm"><br>
 	  <div class="container">
-	    <h1>Register</h1>
+		<br><br>
+	   <h2>Register</h2>
 	    <hr>
 
 	    <label for="name"><b>Name</b></label>
