@@ -5,13 +5,21 @@
     <title>Homepage</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" href="\css\index.css">
-	
+	<script src="js\index.js"></script>
 </head>
 <body>
-    <div class="vertical-menu">
-	  <a href="index.html" class="active">Homepage</a>
-	  <a href="display_users.html">Display Users</a>
-	  <a href="register_user.html">Register New User</a>
-	</div>
+	<main>
+		<nav>
+			<div class="dropdown toggle">
+			      <input id="t1" type="checkbox" checked>
+			      <label for="t1">Menu</label>
+			      <ul>
+			        <li><a href="index.html">Homepage</a></li>
+			        <li><a href="display_users.html">Display Users</a></li>
+			        <li><a href="register_user.html">Register new user</a></li>
+			      </ul>
+		    </div>
+	    </nav>
+    </main>
 </body>
 </html>
