@@ -1,17 +1,49 @@
-<!-- user_details.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>User Details</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="stylesheet" href="\css\user_details.css">
-	<script src="js\user_details.js"></script>
+    <link rel="stylesheet" href="\css\user_details.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="js\user_details.js"></script>
 </head>
 <body>
     <h1>User Details</h1>
     <div id="userDetails">
-       
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">User</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td id="userName"></td>
+                </tr>
+                <tr>
+                    <td>Surname</td>
+                    <td id="userSurname"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td id="userGender"></td>
+                </tr>
+                <tr>
+                    <td>Birthdate</td>
+                    <td id="userBirthdate"></td>
+                </tr>
+                <tr>
+                    <td>Work Address</td>
+                    <td id="userWorkAddress"></td>
+                </tr>
+                <tr>
+                    <td>Home Address</td>
+                    <td id="userHomeAddress"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
