@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="/css/edit_user.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="/js/edit_user.js"></script> 
+</head>
+<body>
+    <form id="editUserForm">
+        <div class="container">
+            <h2>Edit User</h2>
+            <hr>
+
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name*" name="name" id="name" required>
+
+            <label for="surname"><b>Surname</b></label>
+            <input type="text" placeholder="Enter Surname*" name="surname" id="surname" required>
+
+            <label for="gender"><b>Gender</b></label>
+            <select id="gender" name="gender" required>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select><br>
+
+            <label for="birthdate"><b>Birthdate</b></label>
+            <input type="text" placeholder="Enter Birthdate*" id="birthdate" name="birthdate" required><br>  
+
+            <label for="workAddress"><b>Work Address</b></label>
+            <input type="textarea" placeholder="Enter Work Address" name="workAddress" id="workAddress">
+
+            <label for="homeAddress"><b>Home Address</b></label>
+            <input type="textarea" placeholder="Enter Home Address" name="homeAddress" id="homeAddress">
+
+            <hr>
+            <button type="submit" class="savebtn">Save</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>
