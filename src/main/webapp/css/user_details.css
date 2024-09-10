@@ -7,15 +7,6 @@ h1 {
     color: #333;
 }
 
-ul {
-    list-style-type: none;
-}
-
- ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -28,4 +19,13 @@ table, th, td {
 th, td {
     padding: 8px;
     text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+th[colspan="2"] {
+    text-align: center;
 }
