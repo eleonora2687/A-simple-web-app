@@ -22,13 +22,16 @@ main {
   display: inline-block;
   position: relative;
 }
+
 .dropdown.toggle > input {
   display: none;
 }
+
 .dropdown > a, .dropdown.toggle > label {
   border-radius: 2px;
   box-shadow: 0 6px 5px -5px rgba(0,0,0,0.3);
 }
+
 .dropdown > a::after, .dropdown.toggle > label::after {
   content: "";
   float: right;
@@ -39,6 +42,7 @@ main {
   border-right: 5px solid transparent;
   border-top: 10px solid #CCC;
 }
+
 .dropdown ul {
   list-style-type: none;
   display: block;
@@ -49,6 +53,7 @@ main {
   box-shadow: 0 6px 5px -5px rgba(0,0,0,0.3);
   overflow: hidden;
 }
+
 .dropdown a, .dropdown.toggle > label {
   display: block;
   padding: 0 0 0 10px;
@@ -57,20 +62,25 @@ main {
   font-size: 15px;
   background-color: #FFF;
 }
+
 .dropdown li {
   height: 0;
   overflow: hidden;
   transition: all 500ms;
 }
+
 .dropdown.hover li {
   transition-delay: 300ms;
 }
+
 .dropdown li:first-child a {
   border-radius: 2px 2px 0 0;
 }
+
 .dropdown li:last-child a {
   border-radius: 0 0 2px 2px;
 }
+
 .dropdown li:first-child a::before {
   content: "";
   display: block;
@@ -82,19 +92,24 @@ main {
   border-bottom: 10px solid #FFF;
   margin: -10px 0 0 30px;
 }
+
 .dropdown a:hover, .dropdown.toggle > label:hover, .dropdown.toggle > input:checked ~ label {
   background-color: #EEE;
   color: #666;
 }
+
 .dropdown > a:hover::after, .dropdown.toggle > label:hover::after, .dropdown.toggle > input:checked ~ label::after {
   border-top-color: #AAA;
 }
+
 .dropdown li:first-child a:hover::before {
   border-bottom-color: #EEE;
 }
-.dropdown.hover:hover li, .dropdown.toggle > input:checked ~ ul li {          
+
+.dropdown.toggle > input:checked ~ ul li {
   height: 40px;
 }
-.dropdown.hover:hover li:first-child, .dropdown.toggle > input:checked ~ ul li:first-child {
+
+.dropdown.toggle > input:checked ~ ul li:first-child {
   padding-top: 15px;
 }
