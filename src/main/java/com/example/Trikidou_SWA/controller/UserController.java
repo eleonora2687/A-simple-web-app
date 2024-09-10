@@ -1,46 +1,93 @@
 package com.example.Trikidou_SWA.controller;
 
-import java.util.List;
-
+import com.example.Trikidou_SWA.model.Address;
+import com.example.Trikidou_SWA.model.User;
+import com.example.Trikidou_SWA.repository.AddressRepository;
+import com.example.Trikidou_SWA.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.Trikidou_SWA.model.User;
-import com.example.Trikidou_SWA.repository.UserRepository;
-
-
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
- @Autowired
- private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
- @GetMapping
- public List<User> getAllUsers() {
-     return userRepository.findAll();
- }
+    @Autowired
+    private AddressRepository addressRepository;
 
- @GetMapping("/{id}")
- public User getUserById(@PathVariable Long id) {
-     return userRepository.findById(id).orElseThrow();
- }
+    private Long getNextId() {
+        Long maxUserId = userRepository.findMaxId().orElse(0L);
+        Long maxAddressId = addressRepository.findMaxId().orElse(0L);
+        return Math.max(maxUserId, maxAddressId) + 1;
+    }
 
- @PostMapping
- public User createUser(@RequestBody User user) {
-     return userRepository.save(user);
- }
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
- @DeleteMapping("/{id}")
- public ResponseEntity<?> deleteUser(@PathVariable Long id) {
-     userRepository.deleteById(id);
-     return ResponseEntity.ok().build();
- }
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) {
+        return userRepository.findById(id).orElseThrow();
+    }
+
+    @PostMapping
+    public User createUser(@RequestBody User userDetails) {
+        Long nextId = getNextId();
+
+        userDetails.setId(nextId);
+        if (userDetails.getAddress() != null) {
+            userDetails.getAddress().setId(nextId);
+        }
+
+        Address address = userDetails.getAddress();
+        if (address != null) {
+            addressRepository.save(address);
+        }
+
+        return userRepository.save(userDetails);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+        User user = userRepository.findById(id).orElseThrow();
+        
+        // Update user basic info
+        user.setName(userDetails.getName());
+        user.setSurname(userDetails.getSurname());
+        user.setGender(userDetails.getGender());
+        user.setBirthdate(userDetails.getBirthdate());
+
+        // Update address if present
+        if (userDetails.getAddress() != null) {
+            Address address = userDetails.getAddress();
+            
+            // Fetch current address for this user
+            Address currentAddress = user.getAddress();
+            
+            if (currentAddress != null) {
+                currentAddress.setHomeAddress(address.getHomeAddress());
+                currentAddress.setWorkAddress(address.getWorkAddress());
+                addressRepository.save(currentAddress);  // Save updated address
+            } else {
+                // If no current address exists, assign new address to the user
+                addressRepository.save(address);
+                user.setAddress(address);
+            }
+        }
+
+        User updatedUser = userRepository.save(user);  // Save updated user
+        return ResponseEntity.ok(updatedUser);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        userRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }
