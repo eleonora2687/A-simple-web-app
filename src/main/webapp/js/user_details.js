@@ -7,16 +7,12 @@ $(document).ready(function() {
             url: `/api/users/${userId}`,
             type: "GET",
             success: function(user) {
-                const userDetails = $("#userDetails");
-                userDetails.empty();
-                userDetails.append(`
-                    <p>Name: ${user.name}</p>
-                    <p>Surname: ${user.surname}</p>
-                    <p>Gender: ${user.gender}</p>
-                    <p>Birthdate: ${user.birthdate}</p>
-                    <p>Work Address: ${user.address.workAddress}</p>
-                    <p>Home Address: ${user.address.homeAddress}</p>
-                `);
+                $("#userName").text(user.name);
+                $("#userSurname").text(user.surname);
+                $("#userGender").text(user.gender);
+                $("#userBirthdate").text(user.birthdate);
+                $("#userWorkAddress").text(user.address.workAddress);
+                $("#userHomeAddress").text(user.address.homeAddress);
             },
             error: function(error) {
                 alert("Error loading user details");
