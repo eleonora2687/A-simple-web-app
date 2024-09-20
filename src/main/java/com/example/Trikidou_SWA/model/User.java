@@ -1,23 +1,21 @@
 package com.example.Trikidou_SWA.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 @Entity
 public class User {
-    @Id
-    private Long id;
-    private String name;
-    private String surname;
-    private String gender;
-    private LocalDate birthdate;
+	@Id
+	private Long id;
+	private String name;
+	private String surname;
+	private String gender;
+	private LocalDate birthdate;
 
-    @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address address;
+	@OneToOne(cascade = CascadeType.ALL)  // Add cascade here
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
 
     public Long getId() {
         return id;

@@ -55,7 +55,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userRepository.findById(id).orElseThrow();
-        
+
         // Update user basic info
         user.setName(userDetails.getName());
         user.setSurname(userDetails.getSurname());
@@ -65,10 +65,10 @@ public class UserController {
         // Update address if present
         if (userDetails.getAddress() != null) {
             Address address = userDetails.getAddress();
-            
+
             // Fetch current address for this user
             Address currentAddress = user.getAddress();
-            
+
             if (currentAddress != null) {
                 currentAddress.setHomeAddress(address.getHomeAddress());
                 currentAddress.setWorkAddress(address.getWorkAddress());
@@ -87,7 +87,14 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (user.getAddress() != null) {
+            addressRepository.delete(user.getAddress());  // Explicitly delete the address if present
+        }
+
+        userRepository.delete(user);  // Then delete the user
         return ResponseEntity.ok().build();
     }
+
 }
