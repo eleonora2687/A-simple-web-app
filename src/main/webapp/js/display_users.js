@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    // Test toastr on page load
+    toastr.info("Toastr is working!");
+
+    // Fetch users and populate table
     $.ajax({
         url: '/api/users',
         method: 'GET',
@@ -17,17 +21,7 @@ $(document).ready(function() {
                 `);
             });
 
-            $(".view-button").click(function() {
-                var userId = $(this).data('id');
-                window.open(`user_details.html?id=${userId}`, '_blank');
-            });
-
-            $(".edit-button").click(function() {
-                var userId = $(this).data('id');
-                window.open(`edit_user.html?id=${userId}`, '_blank');
-            });
-
-            // Handle delete button click
+            // Delete user handling
             $(".delete-button").click(function() {
                 var userId = $(this).data('id');
                 if (confirm("Are you sure you want to delete this user?")) {
@@ -35,18 +29,20 @@ $(document).ready(function() {
                         url: `/api/users/${userId}`,
                         method: 'DELETE',
                         success: function() {
-                            alert("User and associated address deleted successfully!");
-                            location.reload(); // Reload the page after deletion
+                            toastr.success("User and associated address deleted successfully!");
+                            setTimeout(function() {
+                                location.reload(); // Reload after toastr notification
+                            }, 1000);
                         },
                         error: function(xhr, status, error) {
-                            alert("Error occurred while deleting the user.");
+                            toastr.error("Error occurred while deleting the user.");
                         }
                     });
                 }
             });
         },
         error: function() {
-            alert("Failed to fetch users.");
+            toastr.error("Failed to fetch users.");
         }
     });
 });
