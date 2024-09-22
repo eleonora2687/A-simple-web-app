@@ -3,30 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Display Users</title>
-    <link rel="stylesheet" href="\css\display_users.css">
-    <link rel="stylesheet" href="\css\horiz_navbar.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js\display_users.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Display Users</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <link rel="stylesheet" href="\css\display_users.css">
+        <link rel="stylesheet" href="\css\horiz_navbar.css">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="js\display_users.js"></script>
+    </head>
+
 </head>
 <body>
-    <ul>
-        <li><a class="active" href="index.html">Homepage</a></li>
-        <li><a href="display_users.html">Display Users</a></li>
-        <li><a href="register_user.html">Register New User</a></li>
-    </ul><br>
-    <h1>Users</h1>
-    
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="usersTableBody">
-        </tbody>
-    </table>
+<ul>
+    <li><a class="active" href="index.html">Homepage</a></li>
+    <li><a href="display_users.html">Display Users</a></li>
+    <li><a href="register_user.html">Register New User</a></li>
+</ul><br>
+
+<h1>Users</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="usersTableBody">
+    </tbody>
+</table>
 </body>
 </html>
