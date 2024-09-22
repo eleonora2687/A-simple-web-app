@@ -1,8 +1,4 @@
 $(document).ready(function() {
-    // Test toastr on page load
-    toastr.info("Toastr is working!");
-
-    // Fetch users and populate table
     $.ajax({
         url: '/api/users',
         method: 'GET',
@@ -21,7 +17,17 @@ $(document).ready(function() {
                 `);
             });
 
-            // Delete user handling
+            $(".view-button").click(function() {
+                var userId = $(this).data('id');
+                window.open(`user_details.html?id=${userId}`, '_blank');
+            });
+
+            $(".edit-button").click(function() {
+                var userId = $(this).data('id');
+                window.open(`edit_user.html?id=${userId}`, '_blank');
+            });
+
+            // Handle delete button click
             $(".delete-button").click(function() {
                 var userId = $(this).data('id');
                 if (confirm("Are you sure you want to delete this user?")) {
@@ -29,20 +35,18 @@ $(document).ready(function() {
                         url: `/api/users/${userId}`,
                         method: 'DELETE',
                         success: function() {
-                            toastr.success("User and associated address deleted successfully!");
-                            setTimeout(function() {
-                                location.reload(); // Reload after toastr notification
-                            }, 1000);
+                            alert("User and associated address deleted successfully!");
+                            location.reload(); // Reload the page after deletion
                         },
                         error: function(xhr, status, error) {
-                            toastr.error("Error occurred while deleting the user.");
+                            alert("Error occurred while deleting the user.");
                         }
                     });
                 }
             });
         },
         error: function() {
-            toastr.error("Failed to fetch users.");
+            alert("Failed to fetch users.");
         }
     });
 });

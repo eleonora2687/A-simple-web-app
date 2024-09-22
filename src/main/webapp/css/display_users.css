@@ -25,6 +25,7 @@ th, td {
     padding: 10px 20px;
     color: white;
     border: none;
+    border-radius: 5px; /* Added rounded corners */
     cursor: pointer;
     margin-right: 5px;
 }
