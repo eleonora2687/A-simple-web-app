@@ -25,10 +25,13 @@ $(function() {
             return;
         }
 
+        // Get selected gender value
+        var gender = $("input[name='gender']:checked").val();
+
         var formData = {
             name: name,
             surname: surname,
-            gender: $("#gender").val(),
+            gender: gender, // Now captures the selected gender value
             birthdate: $("#birthdate").val(),
             address: {
                 workAddress: $("#workAddress").val(),
@@ -44,6 +47,9 @@ $(function() {
             success: function(response) {
                 alert("User registered successfully!");
                 window.location.href = "display_users.html";
+            },
+            error: function(error) {
+                alert("Error registering user.");
             }
         });
     });

@@ -2,15 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport meta tag for responsiveness -->
     <title>Register New User</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="\css\register_user.css"> 
-	<link rel="stylesheet" href="\css\horiz_navbar.css">
+    <link rel="stylesheet" href="/css/register_user.css"> 
+    <link rel="stylesheet" href="/css/horiz_navbar.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="js\register_user.js"></script>
+    <script src="js/register_user.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif; /* Standardize font-family */
+            background-color: #f4f4f4; /* Light background for better contrast */
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center; /* Center the navigation links */
+            background-color: #333; /* Background color for navbar */
+        }
+
+        li {
+            display: inline; /* Display links inline */
+        }
+
+        a {
+            text-decoration: none; /* Remove underline from links */
+            color: white; /* Link color */
+            padding: 14px 16px; /* Padding for links */
+            display: inline-block; /* Make links block elements */
+        }
+
+        a:hover {
+            background-color: #111; /* Change link color on hover */
+        }
+
+        .active {
+            background-color: #04AA6D; /* Active link color */
+        }
+
+        .container {
+            width: 90%; /* Make the container width responsive */
+            max-width: 500px; /* Limit max width on larger screens */
+            margin: 20px auto; /* Center the container */
+            padding: 16px;
+            background-color: white;
+            border-radius: 5px; /* Add some border-radius */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add subtle shadow */
+        }
+
+        input[type=text], input[type=textarea], select {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: 1px solid #ccc; /* More visible border */
+            outline: none;
+            border-radius: 4px; /* Add some border-radius to inputs */
+        }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        .registerbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            font-size: 20px;
+            border-radius: 4px; /* Add border-radius to button */
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+        .terms {
+            margin: 20px 0;
+        }
+
+        .terms label {
+            font-size: 16px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%; /* Adjust container width for smaller screens */
+            }
+
+            .registerbtn {
+                font-size: 18px; /* Smaller font size for buttons */
+            }
+
+            input[type=text], input[type=textarea], select {
+                padding: 12px; /* Smaller padding for inputs */
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -18,9 +123,9 @@
         <li><a class="active" href="index.html">Homepage</a></li>
         <li><a href="display_users.html">Display Users</a></li>
         <li><a href="register_user.html">Register New User</a></li>
-    </ul><br><br>
+    </ul><br>
 
-    <form action="/action_page.php" form id="registerUserForm">
+    <form action="/action_page.php" id="registerUserForm">
         <div class="container">
             <h2>Register</h2>
             <hr>
@@ -41,14 +146,13 @@
             <input type="text" placeholder="Enter Birthdate*" id="birthdate" name="birthdate" required><br>  
 
             <label for="workAddress"><b>Work Address</b></label>
-            <input type="textarea" placeholder="Enter Work Address" name="workAddress" id="workAddress">
+            <input type="text" placeholder="Enter Work Address" name="workAddress" id="workAddress">
 
             <label for="homeAddress"><b>Home Address</b></label>
-            <input type="textarea" placeholder="Enter Home Address" name="homeAddress" id="homeAddress">
+            <input type="text" placeholder="Enter Home Address" name="homeAddress" id="homeAddress">
 
-           
             <div class="terms">
-                <input type="checkbox" id="termsCheckbox" name="terms">
+                <input type="checkbox" id="termsCheckbox" name="terms" required>
                 <label for="termsCheckbox">I have read and agree to the terms of service</label>
             </div>
 

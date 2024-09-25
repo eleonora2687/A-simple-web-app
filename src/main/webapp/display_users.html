@@ -2,12 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added viewport meta tag -->
     <title>Display Users</title>
-    <link rel="stylesheet" href="\css\display_users.css">
-    <link rel="stylesheet" href="\css\horiz_navbar.css">
-
+    <link rel="stylesheet" href="/css/display_users.css">
+    <link rel="stylesheet" href="/css/horiz_navbar.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js\display_users.js"></script>
+    <script src="js/display_users.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif; /* Standardize font-family */
+            background-color: #f4f4f4; /* Light background for better contrast */
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center; /* Center the navigation links */
+            background-color: #333; /* Background color for navbar */
+        }
+
+        li {
+            display: inline; /* Display links inline */
+        }
+
+        a {
+            text-decoration: none; /* Remove underline from links */
+            color: white; /* Link color */
+            padding: 14px 16px; /* Padding for links */
+            display: inline-block; /* Make links block elements */
+        }
+
+        a:hover {
+            background-color: #111; /* Change link color on hover */
+        }
+
+        .active {
+            background-color: #04AA6D; /* Active link color */
+        }
+
+        h1 {
+            text-align: center; /* Center the heading */
+            margin: 20px 0; /* Spacing around heading */
+        }
+
+        table {
+            width: 100%; /* Table width */
+            border-collapse: collapse; /* Collapse borders */
+            margin: 20px 0; /* Margin around table */
+        }
+
+        th, td {
+            border: 1px solid black; /* Table border */
+            padding: 8px; /* Padding in cells */
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            li {
+                float: none; /* Stack navigation items vertically */
+            }
+
+            th, td {
+                font-size: 14px; /* Reduce font size for smaller screens */
+                padding: 6px; /* Reduce padding for smaller screens */
+            }
+
+            h1 {
+                font-size: 24px; /* Adjust heading size */
+            }
+        }
+    </style>
 </head>
 <body>
     <ul>
@@ -15,9 +87,10 @@
         <li><a href="display_users.html">Display Users</a></li>
         <li><a href="register_user.html">Register New User</a></li>
     </ul><br>
+
     <h1>Users</h1>
     
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Name</th>
