@@ -25,13 +25,13 @@ $(function() {
             return;
         }
 
-        // Get selected gender value
-        var gender = $("input[name='gender']:checked").val();
+        // Get selected gender value correctly
+        var gender = $("#gender").val();
 
         var formData = {
             name: name,
             surname: surname,
-            gender: gender, // Now captures the selected gender value
+            gender: gender, // Now correctly captures the selected gender value
             birthdate: $("#birthdate").val(),
             address: {
                 workAddress: $("#workAddress").val(),
